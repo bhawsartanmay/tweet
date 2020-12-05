@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>Users</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>UserName</th>
+        <th>Email</th>
+        <th>Follow</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.username %></td>
+          <td><%= user.email %></td>
+          <td>
+            <% if current_user.followed?(user.id) %>
+              <%= link_to 'unfollow', unfollow_users_path(user_id: user.id), method: :delete %>
+            <% else %>
+              <%= link_to 'follow', follow_users_path(user_id: user.id), method: :post %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

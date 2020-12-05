@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>tweets</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>username</th>
+        <th>Tweet</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tweets.each do |tweet| %>
+        <tr>
+          <td><%= tweet.user.username %></td>
+          <td><%= tweet.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tweet</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>    
+  </head>
+
+  <body>
+    <p id="notice", style="color: green"><%= notice %></p>
+      <div class="container">
+        <% if current_user.present? %>
+            <ul class="list-inline">
+              <li><%= link_to "Home", new_tweet_path %></li>
+              <li><%= link_to "All Users", users_path %></li>
+              <li><%= link_to "My Followers", users_path(type: "my_followers") %></li>
+              <li><%= link_to "My Followings", users_path(type: "my_followings") %></li>
+              <li><%= link_to "My Tweets", tweet_index_path %></li>
+              <li><%= link_to "All Tweets", tweet_index_path(type: "all_tweets") %></li>
+            </ul>
+        <% end %>
+        <%= yield %>
+      </div>
+  </body>
+</html>
